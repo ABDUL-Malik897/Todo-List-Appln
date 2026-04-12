@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require("cors");
 const app = express()
 const dotenv = require('dotenv');
 const DbConnection = require('./dbConnection');
@@ -9,7 +10,7 @@ const port = process.env.PORT || 8080   //* : "always after dotenv.config()"
 
 const todoRouter = require('./routes/todo-routes')
 
-
+app.use(require("cors")());
 app.use(express.json())
 
 app.get('/',(req,res)=>{
