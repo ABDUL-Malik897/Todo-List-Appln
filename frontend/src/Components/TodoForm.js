@@ -2,7 +2,7 @@ import axios from 'axios'
 import React, { useState } from 'react'
 import { useTodosContext } from '../Hooks/useTodoContext'
 
-
+const BASE_URL = process.env.REACT_APP_API_URL
 const TodoForm = () => {
     
 
@@ -16,7 +16,7 @@ const TodoForm = () => {
         e.preventDefault()
         const todo = { Title , Content , Completed }
         try{
-        const response = await axios.post('/api/todos/',todo) 
+        const response = await axios.post(`${BASE_URL}/api/todos/`,todo) 
         console.log(response.data)
         setError(null)
         setTitle('')

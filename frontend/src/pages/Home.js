@@ -7,13 +7,13 @@ import TodoDetails from '../Components/TodoDetails';
 import TodoForm from '../Components/TodoForm';
 import { useTodosContext } from '../Hooks/useTodoContext';
 
-
+const BASE_URL = process.env.REACT_APP_API_URL
 const Home = () => {
     const {todos , dispatch , search } = useTodosContext()
     useEffect(() => {
         const fetchTODOs = async () => 
             {
-                const response = await axios.get('/api/todos/')
+                const response = await axios.get(`${BASE_URL}/api/todos/`)
                 dispatch({type : 'SET_TODO', payload : response.data.data})
             }
         fetchTODOs()

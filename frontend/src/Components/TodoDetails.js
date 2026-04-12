@@ -4,6 +4,7 @@ import { useTodosContext } from '../Hooks/useTodoContext'
 import TodoForm from './TodoForm'
 
 import formatDistaneToNow from "date-fns/formatDistanceToNow"
+const BASE_URL = process.env.REACT_APP_API_URL
 
 const TodoDetails = ({todo}) => {
     
@@ -17,7 +18,7 @@ const TodoDetails = ({todo}) => {
         const confirmDelete = window.confirm(`Deleting Todo with Title : ${todo.Title}`);
         if (!confirmDelete) return;
         try{
-        await axios.delete(`/api/todos/${todo._id}`)
+        await axios.delete(`${BASE_URL}/api/todos/${todo._id}`)
         dispatch({type : 'DELETE_TODO' , payload : todo._id})
         }catch(error){
             setError(error.response?.data?.message);
@@ -25,7 +26,7 @@ const TodoDetails = ({todo}) => {
     }
     const handleUpdate = async () => {
     try {
-    const response = await axios.put(`/api/todos/${todo._id}`, {
+    const response = await axios.put(`${BASE_URL}/api/todos/${todo._id}`, {
         Title: Title,
         Content: Content,
     })
@@ -40,7 +41,7 @@ const TodoDetails = ({todo}) => {
         // console.log("clicked");
         
         try {
-            const response = await axios.put(`/api/todos/${todo._id}`, {
+            const response = await axios.put(`${BASE_URL}/api/todos/${todo._id}`, {
                 Completed: !todo.Completed,
             })
             dispatch({ type: "UPDATE_TODO", payload: response.data.data })
