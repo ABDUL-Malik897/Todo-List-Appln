@@ -33,14 +33,14 @@ npm install
 Create a `.env` file inside the backend folder and add:
 
 ```
-PORT=5000
+PORT=4000
 MONGO_URI=your_mongodb_connection_string
 ```
 
 #### Run Backend
 
 ```bash
-npm start
+npm run dev
 ```
 
 ---
@@ -57,7 +57,7 @@ npm install
 If using proxy (recommended), ensure in `package.json`:
 
 ```
-"proxy": "http://localhost:5000"
+"proxy": "http://localhost:4000"
 ```
 
 ####  Run Frontend
@@ -95,6 +95,7 @@ npm start
 ### 1. CORS Issues
 
 **Problem:** Frontend couldn’t communicate with backend.
+
 **Solution:** Used proxy in React (`package.json`) instead of configuring CORS manually.
 
 ---
@@ -102,6 +103,7 @@ npm start
 ### 2. State Not Persisting After Reload
 
 **Problem:** Tasks were resetting or showing incorrect status.
+
 **Solution:** Ensured proper backend fetch (`GET API`) on component load using `useEffect`.
 
 ---
@@ -109,10 +111,11 @@ npm start
 ### 3. Delete Without Confirmation
 
 **Problem:** Tasks were deleted instantly.
+
 **Solution:** Added confirmation popup:
 
 ```js
-if (window.confirm("Are you sure you want to delete?")) {
+if (window.confirm(`Do you want to delete ${todo.Title}`)) {
    handleDelete(id);
 }
 ```
@@ -149,4 +152,4 @@ max-height: 300px;
 
 ABDUL MALIK
 
----
+
