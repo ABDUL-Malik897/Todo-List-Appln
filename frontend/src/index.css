@@ -196,3 +196,19 @@ header a {
     border-radius: 6px;
     font-size: 14px;
 }
+
+@media (max-width : 720px){
+    header .container , .home{
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+
+    }
+    header .container{
+        min-width: 480px;
+    }
+    header{
+        min-width: 500px;
+    }
+    
+}
