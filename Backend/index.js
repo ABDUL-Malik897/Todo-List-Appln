@@ -10,9 +10,10 @@ const port = process.env.PORT || 8080   //* : "always after dotenv.config()"
 
 const todoRouter = require('./routes/todo-routes')
 
-app.use(require("cors")({
+app.use(cors({
     origin: "https://todo-list-appln.vercel.app/"
 }));
+
 app.use(express.json())
 
 app.get('/',(req,res)=>{
