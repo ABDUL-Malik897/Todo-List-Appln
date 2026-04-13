@@ -210,5 +210,25 @@ header a {
     header{
         min-width: 500px;
     }
-    
+    .todos{
+        min-width: 500px;
+    }
+}
+
+@media (max-width : 480px){
+    header .container{
+        min-width: 240px;
+    }
+    header{
+        min-width: 300px;
+    }
+    .todos{
+        min-width: 84vw;
+    }
+    header .container input{
+        min-width: 70vw;
+    }
+    header .container h1{
+        padding-left: 14vw;
+    }
 }
